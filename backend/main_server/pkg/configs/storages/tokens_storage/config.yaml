@@ -1,0 +1,8 @@
+login: wallets
+password: wallets
+host: tokens_storage
+db_name: tokens
+coll_name: tokens
+port: 27017
+pool: 100
+time: 5
