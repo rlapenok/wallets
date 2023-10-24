@@ -16,13 +16,13 @@ import (
 type rowTokensService interface {
 	createRowRefreshToken(string, time.Time) (*token_library.RowRefreshToken, error)
 	createRowAccessToken(string, time.Time) *jwt.Token
-	signToken(*jwt.Token) (string, error)
-	checkSignature(string, string)
+	signToken(*jwt.Token, string) (*string, error)
+	checkSignature(string, string) (bool, error)
 }
 
-type TokenManagerAuth interface {
+type TokenServiceAuth interface {
 	rowTokensService
-	CreateTokens(string) (*token_library.Tokens, error)
+	CreateTokens(string, time.Time) (*token_library.Tokens, error)
 	CheckTokens(string, string) (bool, error)
 }
 
