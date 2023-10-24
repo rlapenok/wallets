@@ -22,7 +22,7 @@ type TokensStorage struct {
 }
 
 // Create new Storage for saving refresh tokens
-func New() TokensStorage {
+func New() *TokensStorage {
 	//Create config for DataBase
 	config := config.New()
 	//Get uri for connection
@@ -44,7 +44,7 @@ func New() TokensStorage {
 	}
 	fmt.Println("Connected to TokenStorage")
 	collection := client.Database(config.DbName).Collection(config.CollName)
-	return TokensStorage{coll: collection}
+	return &TokensStorage{coll: collection}
 
 }
 func (storage *TokensStorage) SaveToken(hash string, ctx context.Context) error {
